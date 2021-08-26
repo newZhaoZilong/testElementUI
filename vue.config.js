@@ -1,3 +1,3 @@
 module.exports = {
-    publicPath:"D:/git/testElement/dist"
+    // publicPath:"D:/git/testElement/dist"
 }

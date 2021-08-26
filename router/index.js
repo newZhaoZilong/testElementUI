@@ -4,13 +4,14 @@ Vue.use(VueRouter)
 
 function getComponent(name) {
     return function () {
-        return import(`@/page/${name}/${name}`)
+        return import(`@/pages/${name}/${name}`)
     }
 }
 const routes = [
     { path: '/', component: getComponent("Main"), alias: '/Main' },
     { path: '/Foo', component: getComponent("Foo") },
-    { path: '/Bar', component: getComponent("Bar") }
+    { path: '/Bar', component: getComponent("Bar") },
+    { path: '/TestDrag', component: getComponent("TestDrag") }
 ]
 
 export default new VueRouter({
