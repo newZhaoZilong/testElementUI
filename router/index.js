@@ -11,7 +11,8 @@ const routes = [
     { path: '/', component: getComponent("Main"), alias: '/Main' },
     { path: '/Foo', component: getComponent("Foo") },
     { path: '/Bar', component: getComponent("Bar") },
-    { path: '/TestDrag', component: getComponent("TestDrag") }
+    { path: '/TestDrag', component: getComponent("TestDrag") },
+    { path: '/TestSortable', component: getComponent("TestSortable") },
 ]
 
 export default new VueRouter({

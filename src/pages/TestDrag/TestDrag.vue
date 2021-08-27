@@ -67,6 +67,7 @@
 </template>
 <script>
 export default {
+  name:"TestDrag",
   //注册draggable组件
   data() {
     return {
