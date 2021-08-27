@@ -1,9 +1,9 @@
 <template>
   <div>
     <ul id="items1">
-      <li class="item">item 1</li>
-      <li class="item">item 2</li>
-      <li class="item">item 3</li>
+      <li class="li-item">item 1</li>
+      <li class="li-item">item 2</li>
+      <li class="li-item">item 3</li>
     </ul>
     <div id="items2">
       <div class="div-item">item 1</div>
@@ -21,11 +21,17 @@ export default {
     var el1 = document.getElementById("items1");
     var sortable1 = new Sortable(el1, {
       //   draggable: ".item",
-      group: "share",
+      sort: false,
+      group: {
+        name: "share",
+        put: false,
+        pull: "clone",
+      },
       onAdd(e) {
         console.log("sortables1===>onAdd", e);
       },
       onEnd(e) {
+        // debugger;
         console.log("sortables1===>onEnd", e);
       },
     });
@@ -33,15 +39,31 @@ export default {
     var sortables2 = new Sortable(el2, {
       group: "share",
       onAdd(e) {
-          debugger
+        // debugger;
         console.log("sortables2===>onAdd", e);
+
+        let { target, clone, item } = e;
+        let createNodeByOld = function (old) {
+          let innerText = old.innerText;
+          let newNode = document.createElement("div");
+          newNode.innerText = innerText;
+          return newNode;
+        };
+        //创建一个新的节点
+        let newnode = createNodeByOld(item);
+        // target.insertBefore(newnode,clone);
+        // //通过replaceChild方法替换节点
+        target.replaceChild(newnode, item);
+        return newnode;
       },
       onEnd(e) {
         console.log("sortables2===>onEnd", e);
       },
+
       //   draggable: ".item",
     });
   },
+  methods: {},
 };
 </script>
 <style scoped>
