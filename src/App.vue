@@ -28,12 +28,5 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-.my-div {
-  position: fixed;
-  right: 200px;
-  top: 200px;
-  width: 100px;
-  height: 100px;
-  background-color: red;
-}
+
 </style>
