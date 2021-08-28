@@ -30,6 +30,25 @@ export default {
       onAdd(e) {
         console.log("sortables1===>onAdd", e);
       },
+      onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
+        // Example: https://jsbin.com/nawahef/edit?js,output
+        evt.dragged; // dragged HTMLElement
+        evt.draggedRect; // DOMRect {left, top, right, bottom}
+        evt.related; // HTMLElement on which have guided
+        evt.relatedRect; // DOMRect
+        evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
+        originalEvent.clientY; // mouse position
+        // debugger;
+        console.log("dragged", evt.dragged);
+        console.log("draggedRect", evt.draggedRect);
+        console.log("related", evt.related);
+        console.log("relatedRect", evt.relatedRect);
+        console.log("willInsertAfter", evt.willInsertAfter);
+        console.log("clientY", evt.clientY);
+        // return false; — for cancel
+        // return -1; — insert before target
+        // return 1; — insert after target
+      },
       onEnd(e) {
         // debugger;
         console.log("sortables1===>onEnd", e);
@@ -55,6 +74,25 @@ export default {
         // //通过replaceChild方法替换节点
         target.replaceChild(newnode, item);
         return newnode;
+      },
+      onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
+        // debugger;
+        // Example: https://jsbin.com/nawahef/edit?js,output
+        evt.dragged; // dragged HTMLElement
+        evt.draggedRect; // DOMRect {left, top, right, bottom}
+        evt.related; // HTMLElement on which have guided
+        evt.relatedRect; // DOMRect
+        evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
+        originalEvent.clientY; // mouse position
+        // return false; — for cancel
+        // return -1; — insert before target
+        // return 1; — insert after target
+        console.log("dragged", evt.dragged);
+        console.log("draggedRect", evt.draggedRect);
+        console.log("related", evt.related);
+        console.log("relatedRect", evt.relatedRect);
+        console.log("willInsertAfter", evt.willInsertAfter);
+        console.log("clientY", evt.clientY);
       },
       onEnd(e) {
         console.log("sortables2===>onEnd", e);
