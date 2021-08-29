@@ -5,43 +5,29 @@
       <span>A、B列可以相互拖动，无法拖到C列</span>
       <div class="col">
         <div class="title">A列</div>
-        <!-- <draggable
-          v-model="arr1"
-          :group="group1"
-          :sort="false"
-          dragClass="dragClass"
-          ghostClass="ghostClass"
-          chosenClass="chosenClass"
-          @start="onStart"
-          @end="onEnd"
-        > -->
-        <!-- <transition-group> -->
-        <!-- <div class="item" v-for="item in arr1" :key="item.id">
-              {{ item.name }}
-            </div> -->
-        <draggable
-          v-model="arr1"
-          :group="group1"
-          :sort="false"
-          dragClass="dragClass"
-          ghostClass="ghostClass"
-          chosenClass="chosenClass"
-          @start="onStart"
-          @end="onEnd"
+        <el-tree
+          :data="treeData"
+          :props="defaultProps"
+          @node-click="handleNodeClick"
         >
-          <!-- <el-tree
-            :data="treeData"
-            :props="defaultProps"
-            @node-click="handleNodeClick"
-          >
-            <template class="custom-tree-node" slot-scope="{ node, data }">
-              <span data-self="1">{{ node.label }}</span>
-            </template>
-          </el-tree> -->
-          <span>哈哈</span>
-        </draggable>
-        <!-- </transition-group> -->
-        <!-- </draggable> -->
+          <template class="custom-tree-node" slot-scope="{ node, data }">
+            <draggable
+              v-if="node.isLeaf"
+              v-model="data.arr"
+              :group="group1"
+              :sort="false"
+              dragClass="dragClass"
+              ghostClass="ghostClass"
+              chosenClass="chosenClass"
+              @start="onStart"
+              @end="onEnd"
+            >
+              <span>{{ node.label }}</span>
+            </draggable>
+            <span v-else>{{ node.label }}</span>
+            <!-- <span >{{ node.label }}</span> -->
+          </template>
+        </el-tree>
       </div>
       <div class="col">
         <div class="title">B列</div>
@@ -103,6 +89,12 @@ export default {
                 {
                   tid: 1,
                   label: "三级 1-1-1",
+                  arr: [{ id: 1, name: "www.itxst.com" }],
+                },
+                {
+                  tid: 2,
+                  label: "三级 1-1-2",
+                  arr: [{ id: 2, name: "www.itxst2.com" }],
                 },
               ],
             },
