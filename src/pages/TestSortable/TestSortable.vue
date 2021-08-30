@@ -19,7 +19,7 @@ export default {
   mounted() {
     console.log("haha");
     var el1 = document.getElementById("items1");
-    var sortable1 = new Sortable(el1, {
+    new Sortable(el1, {
       //   draggable: ".item",
       sort: false,
       group: {
@@ -30,14 +30,15 @@ export default {
       onAdd(e) {
         console.log("sortables1===>onAdd", e);
       },
-      onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
+      //, /**Event*/ originalEvent
+      onMove: function (/**Event*/ evt) {
         // Example: https://jsbin.com/nawahef/edit?js,output
-        evt.dragged; // dragged HTMLElement
-        evt.draggedRect; // DOMRect {left, top, right, bottom}
-        evt.related; // HTMLElement on which have guided
-        evt.relatedRect; // DOMRect
-        evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
-        originalEvent.clientY; // mouse position
+        // evt.dragged; // dragged HTMLElement
+        // evt.draggedRect; // DOMRect {left, top, right, bottom}
+        // evt.related; // HTMLElement on which have guided
+        // evt.relatedRect; // DOMRect
+        // evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
+        // originalEvent.clientY; // mouse position
         // debugger;
         console.log("dragged", evt.dragged);
         console.log("draggedRect", evt.draggedRect);
@@ -55,13 +56,13 @@ export default {
       },
     });
     var el2 = document.getElementById("items2");
-    var sortables2 = new Sortable(el2, {
+    new Sortable(el2, {
       group: "share",
       onAdd(e) {
         // debugger;
         console.log("sortables2===>onAdd", e);
-
-        let { target, clone, item } = e;
+        //, clone
+        let { target, item } = e;
         let createNodeByOld = function (old) {
           let innerText = old.innerText;
           let newNode = document.createElement("div");
@@ -75,15 +76,16 @@ export default {
         target.replaceChild(newnode, item);
         return newnode;
       },
-      onMove: function (/**Event*/ evt, /**Event*/ originalEvent) {
+      //, /**Event*/ originalEvent
+      onMove: function (/**Event*/ evt) {
         // debugger;
         // Example: https://jsbin.com/nawahef/edit?js,output
-        evt.dragged; // dragged HTMLElement
-        evt.draggedRect; // DOMRect {left, top, right, bottom}
-        evt.related; // HTMLElement on which have guided
-        evt.relatedRect; // DOMRect
-        evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
-        originalEvent.clientY; // mouse position
+        // evt.dragged; // dragged HTMLElement
+        // evt.draggedRect; // DOMRect {left, top, right, bottom}
+        // evt.related; // HTMLElement on which have guided
+        // evt.relatedRect; // DOMRect
+        // evt.willInsertAfter; // Boolean that is true if Sortable will insert drag element after target by default
+        // originalEvent.clientY; // mouse position
         // return false; — for cancel
         // return -1; — insert before target
         // return 1; — insert after target

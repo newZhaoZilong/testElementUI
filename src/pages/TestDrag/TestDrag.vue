@@ -19,8 +19,10 @@
               dragClass="dragClass"
               ghostClass="ghostClass"
               chosenClass="chosenClass"
-              @start="onStart"
-              @end="onEnd"
+              @start="onStart1"
+              @add="onAdd1"
+              @move="onMove1"
+              @end="onEnd1"
             >
               <span>{{ node.label }}</span>
             </draggable>
@@ -34,18 +36,20 @@
         <draggable
           v-model="arr2"
           :group="group2"
+          class="my-drag-container"
           dragClass="dragClass"
           ghostClass="ghostClass"
           chosenClass="chosenClass"
-          @start="onStart"
-          @add="onAdd"
-          @end="onEnd"
+          @start="onStart2"
+          @add="onAdd2"
+          @move="onMove2"
+          @end="onEnd2"
         >
-          <transition-group>
-            <div class="item" v-for="item in arr2" :key="item.id">
-              {{ item.name }}
-            </div>
-          </transition-group>
+          <!-- <transition-group> -->
+          <div class="item2" v-for="item in arr2" :key="item.id">
+            {{ item.name }}
+          </div>
+          <!-- </transition-group> -->
         </draggable>
       </div>
     </div>
@@ -70,6 +74,8 @@ export default {
         { id: 6, name: "www.msn.com" },
         { id: 7, name: "www.ebay.com" },
         { id: 8, name: "www.yahoo.com" },
+        { id: 9, name: "www.ebay.com" },
+        { id: 10, name: "www.yahoo.com" },
       ],
       group1: {
         name: "shared",
@@ -112,17 +118,34 @@ export default {
       console.log(data);
     },
     //开始拖拽事件
-    onStart(e) {
-      console.log("onStart", e);
-      this.drag = true;
+    onStart1(e) {
+      console.log("onStart1", e);
     },
-    onAdd(e) {
-      console.log("onAdd", e);
+    onAdd1(e) {
+      e.item._underlying_vm_.name = "shan";
+      console.log("onAdd1", e);
+    },
+    onMove1(e) {
+      console.log("onMove1", e);
     },
     //拖拽结束事件
-    onEnd(e) {
-      console.log("onEnd", e);
-      this.drag = false;
+    onEnd1(e) {
+      console.log("onEnd1", e);
+    },
+    //开始拖拽事件
+    onStart2(e) {
+      console.log("onStart2", e);
+    },
+    onAdd2(e) {
+      e.item._underlying_vm_.name = "shan";
+      console.log("onAdd2", e);
+    },
+    onMove2(e) {
+      console.log("onMove2", e);
+    },
+    //拖拽结束事件
+    onEnd2(e) {
+      console.log("onEnd2", e);
     },
   },
 };
@@ -149,17 +172,6 @@ export default {
 .title {
   padding: 6px 12px;
 }
-.col {
-  width: 40%;
-  flex: 1;
-  padding: 10px;
-  border: solid 1px #eee;
-  border-radius: 5px;
-  float: left;
-}
-.col + .col {
-  margin-left: 10px;
-}
 
 .item {
   padding: 6px 12px;
@@ -174,5 +186,18 @@ export default {
 .item + .item {
   border-top: none;
   margin-top: 6px;
+}
+.my-drag-container {
+  width: 500px;
+  min-height: 100px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item2 {
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  background: red;
 }
 </style>
