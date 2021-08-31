@@ -1,15 +1,15 @@
 <template>
   <div>
-    <ShanBox />
+    <ShanWrap :age="18" @left="leftBt" @right="rightBt" />
     <anchored-heading :level="1"> </anchored-heading>
   </div>
 </template>
 <script>
-import ShanBox from "./components/ShanBox";
+import ShanWrap from "./components/ShanWrap";
 
 export default {
   components: {
-    ShanBox,
+    ShanWrap,
     "anchored-heading": {
       props: {
         level: {
@@ -21,14 +21,23 @@ export default {
       // debugger;
       render: function () {
         let { _c, _v } = this;
-        debugger;
+
         let vnode = _c("div", [
           _c("h1", { class: "my-h1" }, [_v("我是头")]),
           _c("h1", [_v("我是尾")]),
         ]);
-        debugger;
+
         return vnode;
       },
+    },
+  },
+
+  methods: {
+    leftBt(e) {
+      console.log("leftBt", e);
+    },
+    rightBt(e) {
+      console.log("rightBt", e);
     },
   },
 };

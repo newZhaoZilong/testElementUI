@@ -1,6 +1,6 @@
 <template>
   <div class="my-box">
-    <span class="box-icon">哈哈</span>
+    <span class="box-icon">哈哈{{ age }}</span>
     <div class="bottom-buttons">
       <button class="button-left" @click="clickLeft">左按钮</button>
       <button class="button-right" @click="clickRight">右按钮</button>
@@ -29,15 +29,20 @@
 //   ])
 export default {
   name: "ShanBox",
+  props: {
+    age: Number,
+  },
   beforeMount() {
-    debugger;
+
   },
   methods: {
     clickLeft() {
       console.log("点击左边");
+      this.$emit("left");
     },
     clickRight() {
       console.log("点击右边");
+      this.$emit("right");
     },
   },
 };

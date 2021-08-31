@@ -399,7 +399,6 @@ const draggableComponent = {
     },
 
     onDragAdd(evt) {
-      debugger
       const element = evt.item._underlying_vm_;
       if (element === undefined) {
         return;
@@ -426,7 +425,6 @@ const draggableComponent = {
     },
 
     onDragUpdate(evt) {
-      debugger
       removeNode(evt.item);
       insertNodeAt(evt.from, evt.item, evt.oldIndex);
       const oldIndex = this.context.index;
