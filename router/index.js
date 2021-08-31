@@ -14,6 +14,7 @@ const routes = [
     { path: '/TestDrag', component: getComponent("TestDrag") },
     { path: '/TestSortable', component: getComponent("TestSortable") },
     { path: '/MyDrag', component: getComponent("MyDrag") },
+    { path: '/TestRender', component: getComponent("TestRender") },
 ]
 
 export default new VueRouter({
