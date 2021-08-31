@@ -120,9 +120,12 @@ export default {
     //开始拖拽事件
     onStart1(e) {
       console.log("onStart1", e);
+      e.item._underlying_vm_ = {
+        id: 3,
+        name: "卧槽",
+      };
     },
     onAdd1(e) {
-      e.item._underlying_vm_.name = "shan";
       console.log("onAdd1", e);
     },
     onMove1(e) {
@@ -137,7 +140,6 @@ export default {
       console.log("onStart2", e);
     },
     onAdd2(e) {
-      e.item._underlying_vm_.name = "shan";
       console.log("onAdd2", e);
     },
     onMove2(e) {
