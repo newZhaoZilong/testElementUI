@@ -1,39 +1,25 @@
 <template>
   <div class="my-box">
+    <slot name="header"></slot>
     <span class="box-icon">哈哈{{ age }}</span>
+  
     <div class="bottom-buttons">
       <button class="button-left" @click="clickLeft">左按钮</button>
       <button class="button-right" @click="clickRight">右按钮</button>
     </div>
+    <slot name="footer"></slot>
   </div>
 </template>
 
 <script>
-//   var _vm = this
-//   var _h = _vm.$createElement
-//   var _c = _vm._self._c || _h
-//   return _c("div", { staticClass: "my-box" }, [
-//     _c("span", { staticClass: "box-icon" }, [_vm._v("哈哈")]),
-//     _c("div", { staticClass: "bottom-buttons" }, [
-//       _c(
-//         "button",
-//         { staticClass: "button-left", on: { click: _vm.clickLeft } },
-//         [_vm._v("左按钮")]
-//       ),
-//       _c(
-//         "button",
-//         { staticClass: "button-right", on: { click: _vm.clickRight } },
-//         [_vm._v("右按钮")]
-//       )
-//     ])
-//   ])
+
 export default {
   name: "ShanBox",
   props: {
     age: Number,
   },
   beforeMount() {
-
+    debugger
   },
   methods: {
     clickLeft() {

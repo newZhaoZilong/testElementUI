@@ -1,6 +1,9 @@
 <template>
   <div>
-    <ShanWrap :age="18" @left="leftBt" @right="rightBt" />
+    <shan-wrap :age="18" @left="leftBt" @right="rightBt">
+      <span slot="header">我是头</span>
+      <span slot="footer">我是脚</span>
+    </shan-wrap>
     <anchored-heading :level="1"> </anchored-heading>
   </div>
 </template>

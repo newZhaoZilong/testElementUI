@@ -74,15 +74,15 @@ export default {
     });
     let pre = sortable1._prepareDragStart;
     sortable1._prepareDragStart = function (evt, touch, target) {
-      let createNodeByOld = function (old) {
-        let innerText = old.innerText;
+      let createNodeByOld = function () {
+        // let innerText = old.innerText;
         let newNode = document.createElement("div");
         newNode.innerText = "你大爷";
         return newNode;
       };
       let newTarget = createNodeByOld(target);
       newTarget.parentNode = target.parentNode
-      debugger
+      // debugger
       return pre.call(this, evt, touch, newTarget);
     };
 
